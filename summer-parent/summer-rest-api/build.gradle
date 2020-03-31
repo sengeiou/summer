@@ -1,7 +1,7 @@
 apply plugin: 'war'
 
 dependencies {
-    implementation project(':springcms-service')
+    implementation project(':summer-service')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'

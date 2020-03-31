@@ -1,6 +1,3 @@
 rootProject.name = 'springcms-parent'
 
-include 'springcms-rest-api', 'springcms-service-api'
-include 'springcms-common'
-include 'springcms-service'
-
+include 'summer-rest-api', 'summer-service-api', 'summer-common', 'summer-service'

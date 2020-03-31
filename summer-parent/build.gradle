@@ -5,7 +5,7 @@ plugins {
 }
 
 allprojects {
-    group = 'com.springcms'
+    group = 'com.summer'
     version = '1.0.0-SNAPSHOT'
 }
 
