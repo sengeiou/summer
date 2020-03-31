@@ -1,0 +1,8 @@
+apply plugin: 'java'
+
+dependencies {
+    implementation project(':springcms-service-api')
+
+    compileOnly 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compileOnly 'org.springframework.boot:spring-boot-starter-security'
+}
