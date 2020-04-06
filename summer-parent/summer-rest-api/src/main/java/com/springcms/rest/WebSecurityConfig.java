@@ -1,17 +1,14 @@
 package com.springcms.rest;
 
-import com.springcms.service.org.user.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-
-import java.util.Collection;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -23,7 +20,7 @@ public class WebSecurityConfig {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.antMatcher("/auth/*");
+            http.antMatcher("/auth/**");
         }
     }
 
@@ -31,63 +28,31 @@ public class WebSecurityConfig {
     @Order(2)
     public static class CmsSecurityConfig extends WebSecurityConfigurerAdapter {
 
+        private UserDetailsService userDetailsService;
+        private PasswordEncoder passwordEncoder;
+
+        @Autowired
+        public CmsSecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+            this.userDetailsService = userDetailsService;
+            this.passwordEncoder = passwordEncoder;
+        }
 
         @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            UserDetailsService service = username -> {
-                return new UserDetailsImpl(null);
-            };
-
-            auth.userDetailsService(service).passwordEncoder(null);
+            auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
         }
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.antMatcher("/cms/*");
+            http.antMatcher("/cms/**");
         }
     }
-}
 
-class UserDetailsImpl implements UserDetails {
 
-    private User user;
 
-    public UserDetailsImpl(User user) {
-        this.user = user;
-    }
 
-    @Override
-    public Collection<GrantedAuthority> getAuthorities() {
-        return null;
-    }
 
-    @Override
-    public String getPassword() {
-        return null;
-    }
 
-    @Override
-    public String getUsername() {
-        return null;
-    }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
 }
