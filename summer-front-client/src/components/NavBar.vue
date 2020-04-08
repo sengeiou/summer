@@ -8,7 +8,8 @@
       <b-collapse id="navbarResponsive" is-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-item v-for="item in items"
-                      :key="item.name" :to="item.to"
+                      :key="item.name"
+                      :to="item.to"
                       :active="item.name === active">
             {{ item.name }}
           </b-nav-item>
