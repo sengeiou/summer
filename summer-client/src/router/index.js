@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import HomeIndex from '../views/HomeIndex.vue'
 
 Vue.use(VueRouter)
 
@@ -13,7 +14,7 @@ Vue.use(VueRouter)
       {
         path: '',
         name: 'HomeIndex',
-        component: null
+        component: HomeIndex
       }
     ]
   },
