@@ -1,8 +1,7 @@
 <template>
   <el-container id="admin">
-    <!-- <el-header style="z-index: 1; margin-left: -20px"> -->
-    <el-header :height="'80px'">
-      <admin-header style="position: absolute;width: 98%;"></admin-header>
+    <el-header :height="'80px'" style="background-color: #409EFF">
+      <admin-header />
     </el-header>
     <!--<el-row style="height: 100%;">-->
     <el-container>
@@ -18,8 +17,8 @@
 </template>
 
 <script>
-import AdminMenu from "../components/AdminMenu.vue";
-import AdminHeader from "../components/AdminHeader.vue";
+import AdminMenu from "@/components/AdminMenu.vue";
+import AdminHeader from "@/components/AdminHeader.vue";
 
 export default {
   name: "Admin",
