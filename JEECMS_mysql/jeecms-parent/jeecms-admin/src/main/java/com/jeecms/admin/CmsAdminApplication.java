@@ -22,14 +22,6 @@ import org.springframework.web.WebApplicationInitializer;
 import com.jeecms.common.configuration.ContextConfig;
 import com.jeecms.common.configuration.WebConfig;
 
-/**
- * 管理后台Application
- * 
- * @author: tom
- * @date: 2018年3月9日 下午3:22:24
- * @Copyright: 江西金磊科技发展有限公司 All rights reserved. Notice
- *             仅限于授权后使用，禁止非授权传阅以及私自用于商业目的。
- */
 @Configuration
 @EnableAutoConfiguration(exclude = { JmxAutoConfiguration.class, ElasticsearchAutoConfiguration.class,
 		ElasticsearchDataAutoConfiguration.class,FreeMarkerAutoConfiguration.class })
