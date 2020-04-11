@@ -3,6 +3,7 @@ package com.jeecms.front.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,7 +31,7 @@ public class LoginImageController {
 	 * @throws GlobalException      
 	 * @return: ResponseInfo
 	 */
-	@RequestMapping(value = "/getImage",method = RequestMethod.GET)
+	@GetMapping("/getImage")
 	public ResponseInfo getImage() throws GlobalException {
 		Map<String,String> attr = configService.get().getConfigMap();
 		String imageUrl = attr.get(GlobalConfigAttr.LOGIN_SYS_IMG_URL);

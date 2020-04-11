@@ -22,6 +22,7 @@ import java.util.Map;
  * @date: 2019年4月13日 下午4:08:23
  */
 public class GlobalConfigAttr implements Serializable {
+
         private static final long serialVersionUID = 1L;
 
         public static final int MAP_INIT_SIZE = 2 << 5;
