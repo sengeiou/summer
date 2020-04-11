@@ -23,7 +23,8 @@ export function filterAsyncRoutes (routes) {
         }
         if (children instanceof Array && children.length) {
           const subMenus = children.filter(c => c.menuType !== 2)
-          if (subMenus.length) rt.redirect = subMenus[0].path
+          if (subMenus.length)
+            rt.redirect = subMenus[0].path
         }
         routeList.push(rt)
         if (children) {

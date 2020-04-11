@@ -23,56 +23,39 @@ import com.jeecms.common.configuration.ContextConfig;
 import com.jeecms.common.configuration.WebConfig;
 
 @Configuration
-@EnableAutoConfiguration(exclude = { JmxAutoConfiguration.class, ElasticsearchAutoConfiguration.class,
-		ElasticsearchDataAutoConfiguration.class,FreeMarkerAutoConfiguration.class })
-@Import({ ContextConfig.class, WebConfig.class })
-@PropertySource({ "classpath:config/spring.jpa.properties" })
-@ImportResource({ "classpath:config/**/context*.xml" })
+@EnableAutoConfiguration(exclude = {JmxAutoConfiguration.class, ElasticsearchAutoConfiguration.class,
+        ElasticsearchDataAutoConfiguration.class, FreeMarkerAutoConfiguration.class})
+@Import({ContextConfig.class, WebConfig.class})
+@PropertySource({"classpath:config/spring.jpa.properties"})
+@ImportResource({"classpath:config/**/context*.xml"})
 @EnableTransactionManagement
-public class CmsAdminApplication extends SpringBootServletInitializer implements WebApplicationInitializer {
+public class CmsAdminApplication extends SpringBootServletInitializer {
 
-	static Logger logger = LoggerFactory.getLogger(CmsAdminApplication.class);
+    static Logger logger = LoggerFactory.getLogger(CmsAdminApplication.class);
 
-	/**
-	 * war方式启动的处理方法
-	 */
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return configureApplication(builder);
-	}
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return configureApplication(builder);
+    }
 
-	/**
-	 * jar方式启动的处理方法
-	 * 
-	 * @param args
-	 *            String
-	 * @throws Exception
-	 *             Exception
-	 */
-	public static void main(String[] args) throws Exception {
-		configureApplication(new SpringApplicationBuilder()).run(args);
-	}
+    public static void main(String[] args) throws Exception {
+        configureApplication(new SpringApplicationBuilder()).run(args);
+    }
 
-	/**
-	 * war方式启动和jar方式启动共用的配置
-	 * 
-	 * @param builder
-	 *            SpringApplicationBuilder
-	 */
-	private static SpringApplicationBuilder configureApplication(SpringApplicationBuilder builder) {
-		return builder.sources(CmsAdminApplication.class)
-				.listeners(new ApplicationListener<ApplicationEnvironmentPreparedEvent>() {
-					// 在应用环境准备好后执行（Application.properties和PoropertySource已读取），
-					// 此时BeanFactory还未准备好（Bean还未创建）
-					@SuppressWarnings("unused")
-					@Override
-					public void onApplicationEvent(ApplicationEnvironmentPreparedEvent event) {
-						ConfigurableEnvironment env = event.getEnvironment();
-						// 用配置文件中的内容覆盖替代Constants的内容
-						// Constants.loadEnvironment(env);
-					}
-				});
-	}
-
-
+    private static SpringApplicationBuilder configureApplication(SpringApplicationBuilder builder) {
+        return builder
+                .sources(CmsAdminApplication.class)
+//                .listeners(new ApplicationListener<ApplicationEnvironmentPreparedEvent>() {
+//                    // 在应用环境准备好后执行（Application.properties和PoropertySource已读取），
+//                    // 此时BeanFactory还未准备好（Bean还未创建）
+//                    @SuppressWarnings("unused")
+//                    @Override
+//                    public void onApplicationEvent(ApplicationEnvironmentPreparedEvent event) {
+//                        ConfigurableEnvironment env = event.getEnvironment();
+//                        // 用配置文件中的内容覆盖替代Constants的内容
+//                         Constants.loadEnvironment(env);
+//                    }
+//                })
+                ;
+    }
 }
