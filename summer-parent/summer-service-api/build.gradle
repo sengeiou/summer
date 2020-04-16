@@ -1,7 +1,11 @@
 apply plugin: 'java-library'
 
 dependencies {
+
+
+
     compileOnly 'org.springframework.security:spring-security-config'
-    implementation 'info.magnolia.blossom:magnolia-module-blossom:3.3.1'
-    //implementation 'info.magnolia.personalization:magnolia-personalization-blossom-compatibility:2.0'
+    compileOnly 'org.springframework.security:spring-security-acl'
+    compileOnly 'org.springframework.security:spring-security-oauth2-resource-server'
+    compileOnly 'org.springframework.security:spring-security-oauth2-jose'
 }

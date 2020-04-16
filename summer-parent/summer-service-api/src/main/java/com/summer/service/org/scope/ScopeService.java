@@ -1,4 +1,8 @@
 package com.summer.service.org.scope;
 
-public class ScopeService {
+public interface ScopeService {
+
+    ScopeQueryDto createScope(ScopeCreateDto scope);
+
+    ScopeQueryDto findScopeById(Long id);
 }

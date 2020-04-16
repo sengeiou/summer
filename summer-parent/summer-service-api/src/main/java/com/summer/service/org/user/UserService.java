@@ -9,5 +9,5 @@ public interface UserService {
     @PreAuthorize("hasRole('ADMIN')")
     String foobar();
 
-    UserQueryDto findUser();
+    UserPassQueryDto findUserPassByUsername(String username);
 }

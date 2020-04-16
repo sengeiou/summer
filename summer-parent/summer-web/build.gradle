@@ -1,0 +1,19 @@
+apply plugin: 'war'
+
+dependencies {
+    implementation project(':summer-rest')
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.springframework.security:spring-security-config'
+    compileOnly 'org.springframework.security:spring-security-acl'
+    compileOnly 'org.springframework.security:spring-security-oauth2-resource-server'
+    compileOnly 'org.springframework.security:spring-security-oauth2-jose'
+
+    testImplementation 'junit:junit:4.12'
+}
+
+test {
+    useJUnit()
+    //useJUnitPlatform()
+}

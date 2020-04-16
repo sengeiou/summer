@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserQueryDto findUser() {
+    public UserPassQueryDto findUser() {
         return null;
     }
 
