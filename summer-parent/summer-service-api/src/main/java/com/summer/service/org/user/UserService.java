@@ -1,13 +1,22 @@
 package com.summer.service.org.user;
 
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Service;
+import com.summer.service.org.scope.ScopeDto;
 
-@Service
+import java.util.List;
+import java.util.Set;
+
 public interface UserService {
 
-    @PreAuthorize("hasRole('ADMIN')")
-    String foobar();
+//    @PreAuthorize("hasRole('ADMIN')")
+//    UserDtoR findUserPassByUsername(String username);
 
-    UserPassQueryDto findUserPassByUsername(String username);
+    List<UserDto> findAllUsers();
+    UserDto createUser(UserDto user);
+
+    UserDto findUserById(Long id);
+    UserDto updateUser(UserDto user);
+    UserDto replaceUser(UserDto user);
+    int deleteUserById(Long id);
+
+    Set<ScopeDto> findUserScopesById(Long id);
 }

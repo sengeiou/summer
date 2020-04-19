@@ -1,4 +1,4 @@
-package com.summer.service.org.role;
-
-public interface RoleService {
-}
+//package com.summer.service.org.role;
+//
+//public interface RoleService {
+//}

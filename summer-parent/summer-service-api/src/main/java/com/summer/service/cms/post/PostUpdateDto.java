@@ -1,4 +1,4 @@
-package com.summer.service.cms.post;
-
-public class PostUpdateDto {
-}
+//package com.summer.service.cms.post;
+//
+//public class PostUpdateDto {
+//}
