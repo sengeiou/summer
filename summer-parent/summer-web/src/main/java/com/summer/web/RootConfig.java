@@ -1,7 +1,5 @@
 package com.summer.web;
 
-import com.summer.service.impl.Pkg;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
-@ComponentScan(basePackageClasses = Pkg.class)
+@ComponentScan(basePackageClasses = com.summer.service.impl.Pkg.class)
 //@Import({DataJpaConfig.class, MethodSecurityConfig.class, WebSecurityConfig.class})
 @Import({DataJpaConfig.class})
 @PropertySource({"classpath:/application.properties", "classpath:/summer.properties"})

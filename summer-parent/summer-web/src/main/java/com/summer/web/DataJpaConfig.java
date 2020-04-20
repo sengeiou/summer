@@ -1,7 +1,5 @@
 package com.summer.web;
 
-import com.summer.service.impl.org.Pkg;
-
 import com.zaxxer.hikari.HikariDataSource;
 
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
@@ -52,7 +50,7 @@ public class DataJpaConfig {
     }
 
     @Configuration
-    @EnableJpaRepositories(basePackageClasses = {Pkg.class},
+    @EnableJpaRepositories(basePackageClasses = {com.summer.service.impl.org.Pkg.class},
             entityManagerFactoryRef = "orgEntityManagerFactory",
             transactionManagerRef = "orgTxManager")
     public static class OrgDataConfig {

@@ -94,7 +94,7 @@
 //
 //        /*
 //        @Bean
-//        public SecurityExpressionHandler<FilterInvocation> webSecurityExpressionHandler() {
+//        public DefaultWebSecurityExpressionHandler webSecurityExpressionHandler() {
 //            DefaultWebSecurityExpressionHandler expressionHandler = new DefaultWebSecurityExpressionHandler();
 //            expressionHandler.setRoleHierarchy(roleHierarchy);
 //            return expressionHandler;
