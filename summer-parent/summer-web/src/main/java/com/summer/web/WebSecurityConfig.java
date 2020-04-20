@@ -35,7 +35,7 @@
 //public class WebSecurityConfig {
 //
 //    @Bean
-//    public static CorsConfigurationSource corsConfigurationSource() {
+//    public static UrlBasedCorsConfigurationSource corsConfigurationSource() {
 //        CorsConfiguration config = new CorsConfiguration();
 //        config.addAllowedOrigin("*");
 //        config.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "PUT", "DELETE"));
