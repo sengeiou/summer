@@ -1,4 +1,4 @@
 dependencies {
-    implementation project(':summer-service')
+    //implementation project(':summer-service')
     implementation project(':summer-service-api')
 }

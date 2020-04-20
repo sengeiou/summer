@@ -17,6 +17,7 @@ public interface UserService {
     UserDto updateUser(UserDto user);
     UserDto replaceUser(UserDto user);
     int deleteUserById(Long id);
+    UserDto findUserWithScopesByUsername(String username);
 
     Set<ScopeDto> findUserScopesById(Long id);
 }

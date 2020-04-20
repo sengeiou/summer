@@ -12,6 +12,7 @@
 //import java.util.stream.Collectors;
 //
 //@Service
+// @Transactional(transactionManager = "orgTxManager")
 //public class UserServiceImpl implements UserService {
 //
 //    private UserDao userDao;
@@ -64,5 +65,9 @@
 //    public UserPassQueryDto findUser() {
 //        return null;
 //    }
+//
+
+//import org.springframework.transaction.annotation.Transactional;
+
 //
 //}

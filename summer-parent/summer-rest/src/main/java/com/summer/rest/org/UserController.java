@@ -1,7 +1,7 @@
 package com.summer.rest.org;
 
 //import com.summer.service.impl.org.user.UserDao;
-import com.summer.service.impl.org.user.User;
+//import com.summer.service.impl.org.user.User;
 import com.summer.service.org.user.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+import javax.sql.DataSource;
 
 @RestController
 @RequestMapping("/${summer.org.context-path:org}/users")
@@ -57,8 +61,10 @@ public class UserController {
 ////        return ResponseEntity.ok(user);
 //    }
 
+
+
     @GetMapping
     public String get() {
-        return "ok";
+        return "users";
     }
 }
