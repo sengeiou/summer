@@ -1,6 +1,6 @@
 package com.summer.service.impl.org.user;
 
-import com.summer.service.impl.org.role.Role;
+import com.summer.service.impl.org.role.RoleEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,7 +33,7 @@ import java.util.Set;
                 subgraphs = {
                         @NamedSubgraph(
                                 name = "Role.scopes",
-                                type = Role.class,
+                                type = RoleEntity.class,
                                 attributeNodes = {@NamedAttributeNode("scopes")}
                         )
                 }
@@ -54,7 +54,7 @@ public class User {
     @JoinTable(name = "tb_user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+    private Set<RoleEntity> roles = new HashSet<>();
 
     public User() {
     }
@@ -91,11 +91,11 @@ public class User {
         this.enabled = enabled;
     }
 
-    public Set<Role> getRoles() {
+    public Set<RoleEntity> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Set<RoleEntity> roles) {
         this.roles = roles;
     }
 

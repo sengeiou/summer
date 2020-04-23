@@ -50,10 +50,13 @@ public class DataJpaConfig {
     }
 
     @Configuration
-    @EnableJpaRepositories(basePackageClasses = {com.summer.service.impl.org.Pkg.class},
+    @EnableJpaRepositories(basePackageClasses = {com.summer.service.impl.Pkg.class},
             entityManagerFactoryRef = "orgEntityManagerFactory",
             transactionManagerRef = "orgTxManager")
     public static class OrgDataConfig {
+
+        private static String[] PACKAGES_TO_SCAN = {"com.summer.service.impl.org"};
+        private static String PERSISTENCE_UNIT_NAME = "orgPU";
 
         @Bean
         public static HikariDataSource orgDataSource(@Qualifier("orgDataSourceProps") DataSourceProperties props) {
@@ -86,8 +89,8 @@ public class DataJpaConfig {
             LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
             emfb.setDataSource(dataSource);
             emfb.setJpaVendorAdapter(jpaVendorAdapter);
-            emfb.setPackagesToScan("com.summer.service.org");
-            emfb.setPersistenceUnitName("orgPU");
+            emfb.setPackagesToScan(PACKAGES_TO_SCAN);
+            emfb.setPersistenceUnitName(PERSISTENCE_UNIT_NAME);
             return emfb;
         }
 

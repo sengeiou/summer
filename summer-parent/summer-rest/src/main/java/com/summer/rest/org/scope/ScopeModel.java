@@ -1,16 +1,22 @@
-package com.summer.service.org.scope;
+package com.summer.rest.org.scope;
 
-public class ScopeDto {
+import com.fasterxml.jackson.annotation.JsonView;
+import com.summer.service.org.scope.Permission;
+
+import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
+
+@Relation(value = "scope", collectionRelation = "scopes")
+public class ScopeModel extends RepresentationModel<ScopeModel> {
+
+    public interface Basic {
+    }
 
     private Long id;
+    @JsonView(Basic.class)
     private Permission permission;
+    @JsonView(Basic.class)
     private String target;
-
-    public ScopeDto(Long id, Permission permission, String target) {
-        this.id = id;
-        this.permission = permission;
-        this.target = target;
-    }
 
     public Long getId() {
         return id;
@@ -34,10 +40,5 @@ public class ScopeDto {
 
     public void setTarget(String target) {
         this.target = target;
-    }
-
-    @Override
-    public String toString() {
-        return "ScopeDto{id=" + id + ", permission=" + permission + ", target='" + target + "'}";
     }
 }

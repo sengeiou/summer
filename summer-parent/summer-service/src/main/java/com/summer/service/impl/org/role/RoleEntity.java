@@ -17,7 +17,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "tb_role")
-public class Role {
+public class RoleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class Role {
             inverseJoinColumns = @JoinColumn(name = "scope_id"))
     private Set<Scope> scopes;
 
-    public Role() {
+    public RoleEntity() {
     }
 
     public Long getId() {

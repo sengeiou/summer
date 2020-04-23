@@ -1,6 +1,6 @@
 package com.summer.service.impl.org.scope;
 
-import com.summer.service.impl.org.role.Role;
+import com.summer.service.impl.org.role.RoleEntity;
 import com.summer.service.org.scope.Permission;
 
 import javax.persistence.Column;
@@ -22,13 +22,13 @@ public class Scope {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private String target;
     @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private Permission permission;
+    @Column(nullable = false)
+    private String target;
     @ManyToMany(mappedBy = "scopes")
-    private Set<Role> roles;
+    private Set<RoleEntity> roles;
 
     public Scope() {
     }
@@ -41,6 +41,14 @@ public class Scope {
         this.id = id;
     }
 
+    public Permission getPermission() {
+        return permission;
+    }
+
+    public void setPermission(Permission permission) {
+        this.permission = permission;
+    }
+
     public String getTarget() {
         return target;
     }
@@ -49,11 +57,11 @@ public class Scope {
         this.target = target;
     }
 
-    public Permission getPermission() {
-        return permission;
+    public Set<RoleEntity> getRoles() {
+        return roles;
     }
 
-    public void setPermission(Permission permission) {
-        this.permission = permission;
+    public void setRoles(Set<RoleEntity> roles) {
+        this.roles = roles;
     }
 }

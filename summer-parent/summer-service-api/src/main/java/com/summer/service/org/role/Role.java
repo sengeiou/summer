@@ -4,13 +4,13 @@ import com.summer.service.org.scope.ScopeDto;
 
 import java.util.Set;
 
-public class RoleDto {
+public class Role {
 
     private Long id;
     private String name;
     private Set<ScopeDto> scopes;
 
-    public RoleDto(Long id, String name, Set<ScopeDto> scopes) {
+    public Role(Long id, String name, Set<ScopeDto> scopes) {
         this.id = id;
         this.name = name;
         this.scopes = scopes;
@@ -38,5 +38,10 @@ public class RoleDto {
 
     public void setScopes(Set<ScopeDto> scopes) {
         this.scopes = scopes;
+    }
+
+    @Override
+    public String toString() {
+        return "RoleDto{id=" + id + ", name='" + name + "'}";
     }
 }

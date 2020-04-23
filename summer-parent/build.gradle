@@ -14,29 +14,37 @@ subprojects {
         maven {
             url = "http://maven.aliyun.com/nexus/content/groups/public/"
         }
-//        mavenCentral artifactUrls: ['https://oss.sonatype.org/content/repositories/releases/']
+        //mavenCentral artifactUrls: ['https://oss.sonatype.org/content/repositories/releases/']
     }
 
     apply plugin: 'java-library'
     apply plugin: 'io.spring.dependency-management'
-//    apply plugin: 'org.springframework.boot'
+    //apply plugin: 'org.springframework.boot'
 
     dependencyManagement {
         imports {
             mavenBom SpringBootPlugin.BOM_COORDINATES
-//            mavenBom 'org.springframework.boot:spring-boot-dependencies:2.2.5.RELEASE'
-//            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3'
+            //mavenBom 'org.springframework.boot:spring-boot-dependencies:2.2.5.RELEASE'
+            //mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3'
         }
     }
 
     dependencies {
         implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+        //implementation 'org.springframework.boot:spring-boot-starter-security'
         implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+        //implementation 'org.springframework.security:spring-security-acl'
+
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        //implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+
+        implementation 'org.springframework.boot:spring-boot-starter-hateoas'
 
         implementation 'org.modelmapper:modelmapper:2.3.7'
-//        implementation 'org.springframework.boot:spring-boot-starter-security'
-//        implementation 'org.springframework.security:spring-security-acl'
+
+        //implementation 'org.mybatis:mybatis:3.5.4'
+        //implementation 'org.mybatis:mybatis-spring:2.0.3'
 
         runtimeOnly 'mysql:mysql-connector-java'
 

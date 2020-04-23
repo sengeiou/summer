@@ -1,5 +1,7 @@
 package com.summer.web;
 
+import org.modelmapper.ModelMapper;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,5 +21,10 @@ public class RootConfig {
     @Bean
     public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
+    }
+
+    @Bean
+    public static ModelMapper modelMapper() {
+        return new ModelMapper();
     }
 }

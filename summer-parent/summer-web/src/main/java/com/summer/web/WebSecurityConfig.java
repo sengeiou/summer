@@ -157,7 +157,7 @@
 //
 //        /*
 //        @Bean
-//        public SecretKey secretKey() {
+//        public static SecretKey secretKey() {
 //            //byte[] key = Base64.getDecoder().decode("Yn2kjibddFAWtnPJ2AFlL8WXmohJMCvigQggaEypa5E=");
 //            byte[] key = KeyGenerators.secureRandom(32).generateKey();
 //            return new SecretKeySpec(key, "HS256");

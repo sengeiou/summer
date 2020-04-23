@@ -16,10 +16,12 @@
 //public class UserServiceImpl implements UserService {
 //
 //    private UserDao userDao;
+//    private ModelMapper modelMapper;
 //
 //    @Autowired
-//    public UserServiceImpl(UserDao userDao) {
+//    public UserServiceImpl(UserDao userDao, ModelMapper modelMapper) {
 //        this.userDao = userDao;
+//        this.modelMapper = modelMapper;
 //    }
 //
 //    @Override
@@ -66,8 +68,3 @@
 //        return null;
 //    }
 //
-
-//import org.springframework.transaction.annotation.Transactional;
-
-//
-//}
