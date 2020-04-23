@@ -1,6 +1,6 @@
 package com.summer.service.org.user;
 
-import com.summer.service.org.role.Role;
+import com.summer.service.org.role.RoleDto;
 
 import java.util.Set;
 
@@ -9,9 +9,9 @@ public class UserDto {
     private Long id;
     private String username;
     private Boolean enabled;
-    private Set<Role> roles;
+    private Set<RoleDto> roles;
 
-    public UserDto(Long id, String username, Boolean enabled, Set<Role> roles) {
+    public UserDto(Long id, String username, Boolean enabled, Set<RoleDto> roles) {
         this.id = id;
         this.username = username;
         this.enabled = enabled;
@@ -42,11 +42,11 @@ public class UserDto {
         this.enabled = enabled;
     }
 
-    public Set<Role> getRoles() {
+    public Set<RoleDto> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Set<RoleDto> roles) {
         this.roles = roles;
     }
 

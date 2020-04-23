@@ -1,4 +1,4 @@
-package com.summer.rest.org.scope;
+package com.summer.service.org.scope;
 
 public class ScopeNotFoundException extends RuntimeException {
 

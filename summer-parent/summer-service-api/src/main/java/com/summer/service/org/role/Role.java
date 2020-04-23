@@ -1,19 +1,38 @@
 package com.summer.service.org.role;
 
-import com.summer.service.org.scope.ScopeDto;
+import com.summer.service.org.scope.Scope;
+import com.summer.service.org.user.User;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import java.util.Set;
 
+@Entity
+@Table(name = "tb_role")
 public class Role {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, unique = true)
     private String name;
-    private Set<ScopeDto> scopes;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
+    @ManyToMany
+    @JoinTable(name = "tb_role_scope",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "scope_id"))
+    private Set<Scope> scopes;
 
-    public Role(Long id, String name, Set<ScopeDto> scopes) {
-        this.id = id;
-        this.name = name;
-        this.scopes = scopes;
+    public Role() {
     }
 
     public Long getId() {
@@ -32,16 +51,19 @@ public class Role {
         this.name = name;
     }
 
-    public Set<ScopeDto> getScopes() {
-        return scopes;
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public void setScopes(Set<ScopeDto> scopes) {
-        this.scopes = scopes;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
-    @Override
-    public String toString() {
-        return "RoleDto{id=" + id + ", name='" + name + "'}";
-    }
+//    public Set<Scope> getScopes() {
+//        return scopes;
+//    }
+//
+//    public void setScopes(Set<Scope> scopes) {
+//        this.scopes = scopes;
+//    }
 }

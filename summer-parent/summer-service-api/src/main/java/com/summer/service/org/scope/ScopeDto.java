@@ -6,10 +6,7 @@ public class ScopeDto {
     private Permission permission;
     private String target;
 
-    public ScopeDto(Long id, Permission permission, String target) {
-        this.id = id;
-        this.permission = permission;
-        this.target = target;
+    public ScopeDto() {
     }
 
     public Long getId() {

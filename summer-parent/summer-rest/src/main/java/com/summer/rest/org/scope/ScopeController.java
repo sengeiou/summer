@@ -1,6 +1,8 @@
 package com.summer.rest.org.scope;
 
+import com.summer.service.org.scope.Scope;
 import com.summer.service.org.scope.ScopeDto;
+import com.summer.service.org.scope.ScopeNotFoundException;
 import com.summer.service.org.scope.ScopeService;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -39,8 +41,8 @@ public class ScopeController {
     // ================================================================================================================
 
     @PostMapping(produces = "application/hal+json")
-    public ScopeModel post(@JsonView(ScopeModel.Basic.class) @RequestBody ScopeModel scope) {
-        return assembler.toModel(service.save(assembler.toDto(scope)));
+    public ScopeModel post(@JsonView(ScopeModel.Basic.class) @RequestBody Scope scope) {
+        return assembler.toModel(service.createOne(scope));
     }
 
     @GetMapping(produces = "application/hal+json")
@@ -56,7 +58,7 @@ public class ScopeController {
 
     @GetMapping(path = "{id}", produces = "application/hal+json")
     public ScopeModel getById(@PathVariable Long id) {
-        return service.findById(id)
+        return service.findOneById(id)
                 .map(assembler::toModel)
                 .orElseThrow(() -> new ScopeNotFoundException(id));
     }

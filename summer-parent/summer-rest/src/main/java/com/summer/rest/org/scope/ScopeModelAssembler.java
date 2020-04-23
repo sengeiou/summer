@@ -31,8 +31,4 @@ public class ScopeModelAssembler extends RepresentationModelAssemblerSupport<Sco
         model.add(links.linkToItemResource(scope), links.linkToCollectionResource().withRel("scopes"));
         return model;
     }
-
-    public ScopeDto toDto(ScopeModel scope) {
-        return new ScopeDto(scope.getId(), scope.getPermission(), scope.getTarget());
-    }
 }

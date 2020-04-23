@@ -1,7 +1,4 @@
-package com.summer.service.impl.org.scope;
-
-import com.summer.service.org.scope.ScopeDto;
-import com.summer.service.org.scope.ScopeService;
+package com.summer.service.org.scope;
 
 import org.modelmapper.ModelMapper;
 
@@ -10,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ScopeServiceImpl implements ScopeService {
@@ -25,25 +23,26 @@ public class ScopeServiceImpl implements ScopeService {
 
     @Override
     public List<ScopeDto> findAll() {
-        return dao.findAllByOrderByIdAsc();
+        return dao.findAllByOrderByIdAsc().stream().map(this::baseToDto).collect(Collectors.toList());
     }
 
     @Override
-    public ScopeDto save(ScopeDto scope) {
-        System.out.println(scope);
+    public ScopeDto createOne(ScopeDto scope) {
         scope.setId(null);
         Scope entity = dtoToEntity(scope);
-        dao.save(entity);
+        dao.saveAndFlush(entity);
         return entityToDto(entity);
     }
 
     @Override
-    public Optional<ScopeDto> findById(Long id) {
-        return dao.findOneById(id);
+    public ScopeDto findOneById(Long id) {
+        return dao.findOneById(id)
+                .map(this::baseToDto)
+                .orElseThrow(() -> new ScopeNotFoundException(id));
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteOneById(Long id) {
         dao.deleteById(id);
     }
 
@@ -52,6 +51,10 @@ public class ScopeServiceImpl implements ScopeService {
     }
 
     private ScopeDto entityToDto(Scope entity) {
-        return new ScopeDto(entity.getId(), entity.getPermission(), entity.getTarget());
+        return modelMapper.map(entity, ScopeDto.class);
+    }
+
+    private ScopeDto baseToDto(BaseScope base) {
+        return modelMapper.map(base, ScopeDto.class);
     }
 }

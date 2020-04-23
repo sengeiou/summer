@@ -3,4 +3,5 @@ apply plugin: 'war'
 dependencies {
     implementation project(':summer-rest')
     implementation project(':summer-service')
+    implementation project(':summer-service-api')
 }

@@ -1,6 +1,6 @@
 package com.summer.rest.org;
 
-import com.summer.rest.org.scope.ScopeNotFoundException;
+import com.summer.service.org.scope.ScopeNotFoundException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

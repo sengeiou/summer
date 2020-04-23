@@ -14,8 +14,10 @@ import org.springframework.hateoas.config.EnableHypermediaSupport;
 @EnableHypermediaSupport(type = EnableHypermediaSupport.HypermediaType.HAL)
 class WebMvcConfig implements WebMvcConfigurer {
 
-    private static String[] RESOURCE_HANDLER_PATH_PATTERNS = {"/auth/**"};
-    private static String[] RESOURCE_LOCATIONS = {"classpath:/static/auth/"};
+    private static final String[] RESOURCE_HANDLER_PATH_PATTERNS = {"/"};
+    private static final String[] RESOURCE_LOCATIONS = {
+            "classpath:/static/", "classpath:/public/", "classpath:/resources/", "classpath:/META-INF/resources"
+    };
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

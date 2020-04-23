@@ -1,14 +1,14 @@
 package com.summer.service.org.scope;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ScopeService {
 
     List<ScopeDto> findAll();
-    ScopeDto save(ScopeDto scope);
 
-    Optional<ScopeDto> findById(Long id);
+    ScopeDto createOne(ScopeDto scope);
 
-    void deleteById(Long id);
+    ScopeDto findOneById(Long id);
+
+    void deleteOneById(Long id);
 }
