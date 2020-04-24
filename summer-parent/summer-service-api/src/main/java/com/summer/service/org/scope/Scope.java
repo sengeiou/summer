@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "tb_scope")
-public class Scope extends BaseScope {
+public class Scope extends ScopeBase {
 
     @ManyToMany(mappedBy = "scopes")
     private Set<Role> roles;

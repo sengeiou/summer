@@ -8,7 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class BaseScope extends AbstractIdentifiable {
+public class ScopeBase extends AbstractIdentifiable {
 
     @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
@@ -17,7 +17,7 @@ public class BaseScope extends AbstractIdentifiable {
     @Column(nullable = false)
     private String target;
 
-    public BaseScope(Long id, Permission permission, String target) {
+    public ScopeBase(Long id, Permission permission, String target) {
         super.setId(id);
         this.permission = permission;
         this.target = target;

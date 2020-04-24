@@ -1,5 +1,6 @@
 package com.summer.rest.org;
 
+import com.summer.service.AbstractNotFoundException;
 import com.summer.service.org.scope.ScopeNotFoundException;
 
 import org.springframework.http.HttpStatus;
@@ -11,8 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-
-    @ExceptionHandler(ScopeNotFoundException.class)
+    @ExceptionHandler(AbstractNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleScopeNotFound(ScopeNotFoundException ex) {
         return ex.getMessage();

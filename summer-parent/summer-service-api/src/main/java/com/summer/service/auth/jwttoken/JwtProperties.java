@@ -1,4 +1,4 @@
-package com.summer.service.impl.auth.jwttoken;
+package com.summer.service.auth.jwttoken;
 
 import com.nimbusds.jose.JWSAlgorithm;
 

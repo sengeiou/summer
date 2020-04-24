@@ -1,14 +1,20 @@
 package com.summer.rest.org.scope;
 
-import com.summer.service.org.scope.Scope;
 import com.summer.service.org.scope.ScopeDto;
-import com.summer.service.org.scope.ScopeNotFoundException;
 import com.summer.service.org.scope.ScopeService;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import org.modelmapper.ModelMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.EntityLinks;
@@ -26,23 +32,27 @@ public class ScopeController {
     private ScopeService service;
     private ScopeModelAssembler assembler;
     private TypedEntityLinks.ExtendedTypedEntityLinks<ScopeDto> links;
+    private ModelMapper modelMapper;
 
     @Autowired
     public ScopeController(
             ScopeService scopeService,
             ScopeModelAssembler scopeModelAssembler,
-            EntityLinks entityLinks) {
+            EntityLinks entityLinks,
+            ModelMapper modelMapper) {
         this.service = scopeService;
         this.assembler = scopeModelAssembler;
         this.links = entityLinks.forType(ScopeDto.class, ScopeDto::getId);
+        this.modelMapper = modelMapper;
     }
 
     // Collection Resource
     // ================================================================================================================
 
     @PostMapping(produces = "application/hal+json")
-    public ScopeModel post(@JsonView(ScopeModel.Basic.class) @RequestBody Scope scope) {
-        return assembler.toModel(service.createOne(scope));
+    public ScopeModel post(@JsonView(ScopeModel.Basic.class) @RequestBody ScopeModel scope) {
+        ScopeDto dto = modelToDto(scope);
+        return assembler.toModel(service.createOne(dto));
     }
 
     @GetMapping(produces = "application/hal+json")
@@ -58,9 +68,7 @@ public class ScopeController {
 
     @GetMapping(path = "{id}", produces = "application/hal+json")
     public ScopeModel getById(@PathVariable Long id) {
-        return service.findOneById(id)
-                .map(assembler::toModel)
-                .orElseThrow(() -> new ScopeNotFoundException(id));
+        return assembler.toModel(service.findOneById(id));
     }
 
 //    @PutMapping("{id}")
@@ -85,13 +93,38 @@ public class ScopeController {
 
     @DeleteMapping("{id}")
     public void deleteById(@PathVariable Long id) {
-        service.deleteById(id);
+        service.deleteOneById(id);
+    }
+
+    // Property Resource
+    // ================================================================================================================
+
+    @GetMapping("{id}/some")
+    public void getSomeById(@PathVariable Long id) {
+        service.deleteOneById(id);
     }
 
     // Search Resource
     // ================================================================================================================
 
+    @GetMapping("{id}/search")
+    public void getSearchById(@PathVariable Long id) {
+        service.deleteOneById(id);
+    }
 
     // Query Method Resource
     // ================================================================================================================
+
+    @GetMapping("{id}/search/someThing")
+    public void searchSomeThingById(@PathVariable Long id) {
+        service.deleteOneById(id);
+    }
+
+
+    // Helper methods
+    // ================================================================================================================
+
+    private ScopeDto modelToDto(ScopeModel model) {
+        return modelMapper.map(model, ScopeDto.class);
+    }
 }
