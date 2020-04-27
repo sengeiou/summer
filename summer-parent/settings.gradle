@@ -1,4 +1,7 @@
 rootProject.name = 'summer-parent'
 
 //include 'summer-boot', 'summer-web', 'summer-rest', 'summer-service', 'summer-service-api', 'summer-common'
-include 'summer-web', 'summer-rest', 'summer-service-api'
+//include 'summer-web', 'summer-rest', 'summer-service-api'
+include 'summer-war'
+include 'summer-webflux'
+

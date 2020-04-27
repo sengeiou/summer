@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -59,30 +60,6 @@ public class DataJpaConfig {
         private static final String PERSISTENCE_UNIT_NAME = "orgPU";
         private static final Class<?> BASE_PACKAGE_CLASS = com.summer.service.org.Pkg.class;
         private static final String BASE_PACKAGE_NAME = BASE_PACKAGE_CLASS.getPackage().getName();
-
-        @Bean
-        public static HikariDataSource orgDataSource(@Qualifier("orgDataSourceProps") DataSourceProperties props) {
-            HikariDataSource ds = new HikariDataSource();
-            ds.setDriverClassName(props.getDriverClassName());
-            ds.setUsername(props.getUsername());
-            ds.setPassword(props.getPassword());
-            ds.setJdbcUrl(props.getUrl());
-            return ds;
-        }
-
-        @Bean
-        public static DataSourceProperties orgDataSourceProps(
-                @Value("${summer.org.datasource.driver-class-name}") String driverClassName,
-                @Value("${summer.org.datasource.url}") String url,
-                @Value("${summer.org.datasource.username}") String username,
-                @Value("${summer.org.datasource.password}") String password) {
-            DataSourceProperties props = new DataSourceProperties();
-            props.setUsername(username);
-            props.setPassword(password);
-            props.setUrl(url);
-            props.setDriverClassName(driverClassName);
-            return props;
-        }
 
         @Bean
         public static LocalContainerEntityManagerFactoryBean orgEntityManagerFactory(

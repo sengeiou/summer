@@ -1,4 +1,4 @@
-package com.summer.web.test;
+package com.summer.web;
 
 import org.junit.Test;
 import org.modelmapper.ModelMapper;

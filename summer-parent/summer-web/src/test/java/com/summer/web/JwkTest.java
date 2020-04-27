@@ -1,4 +1,4 @@
-package com.summer.web.test;
+package com.summer.web;
 
 import com.nimbusds.jose.JWSSigner;
 import com.nimbusds.jose.crypto.RSASSASigner;

@@ -1,0 +1,13 @@
+apply plugin: 'war'
+
+dependencies {
+    implementation 'org.springframework:spring-webmvc'
+    implementation 'org.springframework.data:spring-data-jpa'
+    //implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'ch.qos.logback:logback-classic'
+
+    testImplementation 'junit:junit'
+    testImplementation 'org.springframework:spring-test'
+    implementation 'jakarta.servlet:jakarta.servlet-api'
+    //testRuntimeOnly 'jakarta.servlet:jakarta.servlet-api'
+}
