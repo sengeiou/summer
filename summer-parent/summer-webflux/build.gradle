@@ -1,8 +1,7 @@
 plugins {
     id 'io.spring.dependency-management' version '1.0.7.RELEASE'
+    id 'java'
 }
-
-apply plugin: 'java'
 
 dependencyManagement {
     imports {
